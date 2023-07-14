@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Data</title>
+  </head>
+  <body>
+    <h1>User Data</h1>
+    <div id="user-data"></div>
+
+    <script>
+      window.onload = function () {
+        fetch('http://localhost:3000/users')
+          .then(response => response.json())
+          .then(data => {
+            const userDataDiv = document.getElementById('user-data');
+            data.forEach(user => {
+              const nameElement = document.createElement('h2');
+              nameElement.textContent = `Name: ${user.name}`;
+              userDataDiv.appendChild(nameElement);
+
+              const passwordElement = document.createElement('h2');
+              passwordElement.textContent = `Password: ${user.password}`;
+              userDataDiv.appendChild(passwordElement);
+            });
+          });
+      };
+    </script>
+  </body>
+</html>
