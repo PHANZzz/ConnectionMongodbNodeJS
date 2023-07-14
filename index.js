@@ -12,7 +12,7 @@ const client = new MongoClient(uri, {
   }
 });
 
-app.get('/users', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
     await client.connect();
     const db = client.db("Stock");
